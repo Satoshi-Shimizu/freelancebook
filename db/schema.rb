@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_08_102524) do
+ActiveRecord::Schema.define(version: 2019_07_08_151016) do
 
   create_table "industries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2019_07_08_102524) do
     t.text "contents"
     t.integer "price_s"
     t.integer "price_e"
-    t.bigint "skill_id"
     t.bigint "place_id"
     t.bigint "jobtype_id"
     t.bigint "industry_id"
@@ -32,7 +31,6 @@ ActiveRecord::Schema.define(version: 2019_07_08_102524) do
     t.index ["industry_id"], name: "index_items_on_industry_id"
     t.index ["jobtype_id"], name: "index_items_on_jobtype_id"
     t.index ["place_id"], name: "index_items_on_place_id"
-    t.index ["skill_id"], name: "index_items_on_skill_id"
   end
 
   create_table "jobtypes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -76,6 +74,5 @@ ActiveRecord::Schema.define(version: 2019_07_08_102524) do
   add_foreign_key "items", "industries"
   add_foreign_key "items", "jobtypes"
   add_foreign_key "items", "places"
-  add_foreign_key "items", "skills"
   add_foreign_key "skills", "languages"
 end

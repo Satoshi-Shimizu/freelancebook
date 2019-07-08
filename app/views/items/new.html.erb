@@ -1,0 +1,15 @@
+<div class="contents row">
+  <%= form_tag('/items', method: :post) do %>
+    <h3>
+      実績案件を登録する
+    </h3>
+    <input placeholder="title" type="text" name="title">
+    <input placeholder="price_s" type="text" name="price_s">
+    <input placeholder="price_e" type="text" name="price_e">
+    <input placeholder="勤務地" type="text" name="place_id">
+    <input placeholder="職種" type="text" name="jobtype_id">
+    <input placeholder="業界" type="text" name="industry_id">
+    <textarea cols="30" name="contents" placeholder="案件概要" rows="10"></textarea>
+    <input type="submit" value="SENT">
+  <% end %>
+</div>
