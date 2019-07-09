@@ -1,15 +1,24 @@
 <div class="contents row">
-  <%= form_tag('/items', method: :post) do %>
-    <h3>
-      実績案件を登録する
-    </h3>
-    <input placeholder="title" type="text" name="title">
-    <input placeholder="price_s" type="text" name="price_s">
-    <input placeholder="price_e" type="text" name="price_e">
-    <input placeholder="勤務地" type="text" name="place_id">
-    <input placeholder="職種" type="text" name="jobtype_id">
-    <input placeholder="業界" type="text" name="industry_id">
-    <textarea cols="30" name="contents" placeholder="案件概要" rows="10"></textarea>
-    <input type="submit" value="SENT">
+  <%= form_for @items do |f| %>
+    <h3>実績案件を登録する</h3>
+
+    <%= f.label :item_id, "案件名" %>
+    <%= f.text_field :title, placeholder: "【スキル名】業務内容" %>
+    
+    <%= f.text_field :price_s, placeholder: "単価最小" %>
+    <%= f.text_field :price_e, placeholder: "単価最大" %>
+  
+    <%= f.label :place_id ,"勤務地"%>
+    <%= f.collection_select :place_id, Place.all, :id, :name %>
+  
+    <%= f.label :industry_id ,"業種"%>
+    <%= f.collection_select :industry_id, Industry.all, :id, :name %>
+  
+    <%= f.label :jobtype_id ,"職種"%>
+    <%= f.collection_select :jobtype_id, Jobtype.all, :id, :name %>
+  
+    <%= f.label :item_id, "案件概要" %>
+    <%= f.text_area :contents, size: "20x10",placeholder: "案件概要"%>
+    <%= f.submit %>
   <% end %>
 </div>
