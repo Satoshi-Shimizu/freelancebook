@@ -1,17 +1,14 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.order("created_at DESC").page(params[:page]).per(5)
   end
 
   def new
     @items = Item.new
-    @languages  = Language.all
-    @jobtypes   = Usertype.all
-    @industries = Industry.all
   end
 
   def create
-    #item = Item.create(item_params)
+    item = Item.create(item_params)
   end
 
   private

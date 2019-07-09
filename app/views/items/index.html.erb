@@ -1,5 +1,5 @@
+<div class="contents row">
   <% @items.each do |item| %>
-    <div class="contents row">
       <p>案件：<%= item.title %></p>
       <p>単価：<%= item.price_s %>〜<%= item.price_e %>万円/月</p>
       <p><%  item.skills.each do |skill| %>
@@ -8,5 +8,6 @@
       </p>
       <p>業界：<%= item.industry.name %> / 職種：<%= item.jobtype.name %></p>
       <p>勤務地：<%= item.place.name %></p>
-    </div>
   <% end %>
+  <%= paginate(@items) %>
+</div>
