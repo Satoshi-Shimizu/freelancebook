@@ -1,0 +1,10 @@
+<div class="contents row" >
+    <p><%= @name %>さんの実績案件一覧</p>
+    <% @items.each do |item| %>
+      <div class="content_post">
+        <%= simple_format(item.title) %>
+        <span class="name"><%= item.title %></span>
+      </div>
+    <% end %>
+    <%= paginate(@items) %>
+  </div>

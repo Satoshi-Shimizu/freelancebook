@@ -6,8 +6,18 @@
         <%= skill.language.name %>
         <% end %>
       </p>
+      <span class="name">
+        <a href="">
+          <span>投稿ユー:ザ</span><%= item.user.name %>
+        </a>
+      </span>
       <p>業界：<%= item.industry.name %> / 職種：<%= item.jobtype.name %></p>
       <p>勤務地：<%= item.place.name %></p>
+      <ul class="more_list">
+        <li>
+          <%= link_to '削除', "/items/#{item.id}", method: :delete %>
+        </li>
+      </ul>
   <% end %>
   <%= paginate(@items) %>
 </div>

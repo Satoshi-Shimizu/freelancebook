@@ -3,4 +3,5 @@ class Item < ApplicationRecord
   belongs_to  :jobtype
   belongs_to  :industry
   belongs_to  :place
+  belongs_to  :user
 end
