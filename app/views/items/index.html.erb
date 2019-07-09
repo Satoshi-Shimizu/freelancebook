@@ -15,6 +15,9 @@
       <p>勤務地：<%= item.place.name %></p>
       <ul class="more_list">
         <li>
+          <%= link_to '編集', "/items/#{item.id}/edit", method: :get %>
+        </li>
+        <li>
           <%= link_to '削除', "/items/#{item.id}", method: :delete %>
         </li>
       </ul>

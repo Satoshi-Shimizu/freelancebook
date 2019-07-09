@@ -19,6 +19,17 @@ class ItemsController < ApplicationController
     item.destroy if item.user_id == current_user.id
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    item = Item.find(params[:id])
+    if item.user_id == current_user.id
+      item.update(item_params)
+    end
+  end
+
   private
   def item_params
     params.require("item").permit(:title, :contents, :price_s, :price_e, :place_id, :jobtype_id, :industry_id)
