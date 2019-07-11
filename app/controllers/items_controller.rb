@@ -6,6 +6,10 @@ class ItemsController < ApplicationController
     @items = Item.includes(:user).page(params[:page]).per(5).order("created_at DESC")
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
   def new
     @items = Item.new
   end

@@ -11,15 +11,18 @@
           投稿ユーザ:<%= item.user.name %>
         </a>
       </span>
-      <p>業界：<%= item.industry.name %> / 職種：<%= item.jobtype.name %></p>
-      <p>勤務地：<%= item.place.name %></p>
       <ul class="more_list">
+        <li>
+          <%= link_to '詳細', "/items/#{item.id}", method: :get %>
+        </li>
+        <% if current_user.id == item.user_id %>
         <li>
           <%= link_to '編集', "/items/#{item.id}/edit", method: :get %>
         </li>
         <li>
           <%= link_to '削除', "/items/#{item.id}", method: :delete %>
         </li>
+        <% end %>
       </ul>
   <% end %>
   <%= paginate(@items) %>

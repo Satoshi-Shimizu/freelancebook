@@ -4,4 +4,5 @@ class Item < ApplicationRecord
   belongs_to  :industry
   belongs_to  :place
   belongs_to  :user
+  has_many    :users, through: :items_users
 end

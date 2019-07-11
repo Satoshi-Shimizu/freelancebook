@@ -1,0 +1,27 @@
+<div class="contents row" >
+  <% if current_user.id == @item.user_id %>
+  <ul class="more_list">
+    <li>
+      <%= link_to '編集', "/items/#{@item.id}/edit", method: :get %>
+    </li>
+    <li>
+      <%= link_to '削除', "/items/#{@item.id}", method: :delete %>
+    </li>
+  </ul>
+  <% end %>
+  <p>案件：<%= @item.title %></p>
+  <p>単価：<%= @item.price_s %>〜<%= @item.price_e %>万円/月</p>
+  <p><%  @item.skills.each do |skill| %>
+    <%= skill.language.name %>
+  </p>
+  <% end %>
+  <span class="name">
+    <a href="/users/<%= @item.user_id %>">
+    投稿ユーザ:<%= @item.user.name %>
+    </a>
+  </span>
+  <p>場所：<%= @item.place.name %></p>
+  <p>業界：<%= @item.industry.name %></p>
+  <p>職種：<%= @item.jobtype.name %></p>
+  <p>業務概要：<%= @item.contents %></p>
+</div>
