@@ -1,10 +1,27 @@
-<div class="contents row" >
-    <p><%= @user.name %>さんの実績案件一覧</p>
-    <% @items.each do |item| %>
-      <div class="content_post">
-        <%= simple_format(item.title) %>
-        <span class="name"><%= item.title %></span>
-      </div>
-    <% end %>
-    <%= paginate(@items) %>
+<div class="user_page">
+  <header class="user_page-header">
+    <div class="yjContainer">
+      <a href="">
+        <div class="user_image"><%= image_tag 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/v/t1.0-1/c32.0.127.127/10256953_450511921719235_7408583294706772933_n.jpg?oh=4b62cd6d72667f23c3c4781dfc763b61&oe=54D54A3C&__gda__=1423979953_5fc50daca871a07e83167f1afbc8d304' %></div>
+        <h2><%= @user.name %> <span>さんのマイページ</span></h2>
+      </a>
+    </div>
+  </header>
+
+  <% if @user.userprofile %>
+    <p>属性：<%= @user.usertype.name %></p>
+    <p>プロファイル   ：<%= @user.userprofile.profile %></p>
+    <p>Twitter      ：<%= @user.userprofile.twitterurl %></p>
+    <p>出身スクール   ：<%= @user.userprofile.school.name %></p>
+    <p>ポートフォリオ  ：<%= @user.userprofile.portfoliourl %></p>
+    <p>ポイント       ：<%= @user.userprofile.point %></p>
+    edit
+    <div class="grid-6">
+      <%= link_to "プロファイルを修正する", "/userprofiles/#{@user.userprofile.id}/edit", method: :get %>
+    </div>
+  <% else %>
+    <div class="grid-6">
+      <%= link_to "プロファイルを登録する", '/userprofiles/new', method: :get %>
+    </div>
+  <% end %>
   </div>

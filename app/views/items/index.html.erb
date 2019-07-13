@@ -15,7 +15,7 @@
         <li>
           <%= link_to '詳細', "/items/#{item.id}", method: :get %>
         </li>
-        <% if current_user.id == item.user_id %>
+        <% if user_signed_in? && current_user.id == item.user_id %>
         <li>
           <%= link_to '編集', "/items/#{item.id}/edit", method: :get %>
         </li>

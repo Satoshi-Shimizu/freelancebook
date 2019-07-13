@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :items
   belongs_to :usertype
+  has_one :userprofile
   has_many  :items, through: :items_users
 end

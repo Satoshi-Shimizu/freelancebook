@@ -1,0 +1,21 @@
+  <div class="contents row">
+    <%= form_with(model: @profile, url: "/userprofiles/#{@profile.id}") do |f| %>
+      <h3>
+        ポートフォリオ修正
+      </h3>
+      <%= f.label :profile, "プロフィール" %>
+      <%= f.text_area :profile, size: "20x10", placeholder: "プロフィール"%>
+
+      <%= f.label :school_id ,"出身スクール"%>
+      <%= f.collection_select :school_id, School.all, :id, :name %>
+
+      <%= f.label :twitterurl ,"Twitter URL"%>
+      <%= f.text_field :twitterurl%>
+
+      <%= f.label :portfoliourl ,"ポートフォリオ URL"%>
+      <%= f.text_field :portfoliourl%>
+
+      <%= f.submit %>
+    <% end %>
+
+  </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_11_150210) do
+ActiveRecord::Schema.define(version: 2019_07_12_114902) do
 
   create_table "industries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -73,6 +73,19 @@ ActiveRecord::Schema.define(version: 2019_07_11_150210) do
     t.index ["language_id"], name: "index_skills_on_language_id"
   end
 
+  create_table "userprofiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "profile"
+    t.bigint "school_id"
+    t.text "twitterurl"
+    t.text "portfoliourl"
+    t.integer "partnerflag"
+    t.integer "point"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["school_id"], name: "index_userprofiles_on_school_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -83,6 +96,7 @@ ActiveRecord::Schema.define(version: 2019_07_11_150210) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "usertype_id"
+    t.integer "userprofile_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -97,4 +111,5 @@ ActiveRecord::Schema.define(version: 2019_07_11_150210) do
   add_foreign_key "items", "jobtypes"
   add_foreign_key "items", "places"
   add_foreign_key "skills", "languages"
+  add_foreign_key "userprofiles", "schools"
 end

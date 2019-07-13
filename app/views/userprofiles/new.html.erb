@@ -1,0 +1,18 @@
+<div class="contents row">
+  <%= form_for @profile do |f| %>
+    <h3>プロファイルを登録する</h3>
+  
+    <%= f.label :school_id ,"出身スクール"%>
+    <%= f.collection_select :school_id, School.all, :id, :name %>
+  
+    <%= f.label :twitterurl ,"Twitter URL"%>
+    <%= f.text_field :twitterurl, placeholder: "https//:URL" %>
+
+    <%= f.label :portfoliourl ,"ポートフォリオURL"%>
+    <%= f.text_field :portfoliourl, placeholder: "https//:URL" %>
+
+    <%= f.label :profile, "プロフィール" %>
+    <%= f.text_area :profile, size: "20x10",placeholder: "自己紹介を書きましょう!!"%>
+    <%= f.submit %>
+  <% end %>
+</div>
