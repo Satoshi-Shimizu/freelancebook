@@ -67,5 +67,6 @@ gem 'sprockets', '3.7.2'
 gem 'mechanize'
 gem 'kaminari'
 gem 'devise'
-
 gem "font-awesome-rails"
+gem 'bootstrap-sass'
+gem 'jquery-rails'
