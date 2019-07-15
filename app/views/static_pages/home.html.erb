@@ -1,27 +1,40 @@
 <!-- About -->
   <section class="about" id="about">
-  <div class="about__container">
-    <h1 class="about__container__site-title">Freelace Book</h1>
-    <p class="about__container__site-sub-title">~99Give 1Take~</p>
-    <div class="about__container__site-description">
+  <div class="about__contents">
+    <div class="about__contents__image">
+    <div class="about__contents__site-title">Freelace Book</div>
+    <p class="about__contents__site-sub-title">~99Give 1Take~</p>
+    <div class="about__contents__site-description">
       <p>生き方もチーム作りも柔軟に</p>
     </div>
-    <div class="about__container__buttons">
-      <a class="button button-white" href="#login">サインイン</a>
+    <div class="about__contents__buttons">
+      <a href="#login">
+        <% if user_signed_in? %>
+          <a href="/">
+            <button type="button" class="btn btn-primary btn-lg">MORE WORKS</button>
+          </a>
+        <% else %>
+          <a href="/users/sign_in">
+            <button type="button" class="btn btn-primary btn-lg">サインイン</button>
+          </a>
+        <% end %>
+      </a>
     </div>
+    <div>
   </div>
   </section>
+  
 <!-- Services -->
   <section class="services">
-    <div class="services__container">
-      <h2  class="services__container__title">Service</h2>
-      <div class="services__container__wrapper">
+    <div class="services__contents">
+      <div  class="services__contents__title">Service</div>
+      <div class="services__contents__wrapper">
         <div class="container">
           <div class="service-icon__box">
             <p class="service-icon__title blod">フリーランス</p>
             <div class="service-icon rounded-circle"><%= fa_icon 'fa fa-handshake-o 3x' %></div>
             <h4 class="service-icon__text blod">Matching</h4>
-            <p class="service-icon__text-description">きっと最適なパートナーを見つける事ができます</p>
+            <p class="service-icon__text-description">最適なパートナーを見つける事ができます</p>
           </div>
           <div class="service-icon__box">
             <p class="service-icon__title blod">プログラミングスクール生</p>
@@ -36,20 +49,21 @@
 
 <!-- Login -->
   <section class="login" id="login">
-    <div class="login__container">
-     <h2  class="login__container__title">はじめてみる</h2>
-      <div class="login__container__wrapper">
+    <div class="login__contents">
+     <div class="login__contents__title">はじめてみる</div>
+      <div class="login__contents__wrapper">
         <div class="container">
-          <div class="login__container__box">
-            <div class="login__container__buttons">
-              <a class="button" href="/users/sign_in">サインイン</a>
-            </div>
-          </div>
-          <div class="login__container__box">
-            <div class="login__container__buttons">
-              <a class="button button-orange" href="/users/sign_up">サインアップ</a>
-            </div>
-          </div>
+          <div class="login__contents__box">
+              <p>すでにアカウントをお持ちの方</p>
+              <a href="/users/sign_in">
+                <button type="button" class="btn btn-primary btn-lg">サインイン</button>
+              </a>
+           </div>
+          <div class="login__contents__box">
+            <p>アカウントを持っていない方</p>
+            <a href="/users/sign_up">
+              <button type="button" class="btn btn-primary btn-lg">サインアップ</button>
+            </a>
         </div>
       </div>
     </div>

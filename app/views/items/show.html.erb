@@ -24,4 +24,45 @@
   <p>業界：<%= @item.industry.name %></p>
   <p>職種：<%= @item.jobtype.name %></p>
   <p>業務概要：<%= @item.contents %></p>
+      <%= form_with(model: @item, url: "/items/#{@item.id}") do |f| %>
+      <h3>実績案件を編集する</h3>
+
+      <div class="cp_iptxt">
+        <%= f.label :item_id, "案件名" %>
+        <%= f.text_field :title, placeholder: "【スキル名】業務内容", class: "ef" %>
+        <span class="focus_line"></span>
+      </div>
+      
+    <div class="cp_iptxt">
+      <%= f.label :price_s ,"最小単価"%>
+      <%= f.text_field :price_s, placeholder: "◯◯万円", class: "ef"%>
+      <span class="focus_line"></span>
+    </div>
+
+    <div class="cp_iptxt">
+      <%= f.label :price_e ,"最大単価*[省略可能]"%>
+      <%= f.text_field :price_e, placeholder: "◯◯万円", class: "ef" %>
+      <span class="focus_line"></span>
+    </div>
+  
+    <div class="cp_iptxt">
+      <%= f.label :place_id ,"勤務地"%>
+      <%= f.collection_select :place_id, Place.all, :id, :name, class: "ef" %>
+      <%= f.label :industry_id ,"業種"%>
+      <%= f.collection_select :industry_id, Industry.all, :id, :name, class: "ef" %>
+    </div>
+  
+    <div class="cp_iptxt">
+      <%= f.label :jobtype_id ,"職種"%>
+      <%= f.collection_select :jobtype_id, Jobtype.all, :id, :name, class: "ef" %>
+      <span class="focus_line"></span>
+    </div>
+  
+    <div class="cp_iptxt">
+      <%= f.label :contents ,"案件概要"%>
+      <%= f.text_area :contents, size:"75x5",placeholder: "実績案件の業務内容を簡単に書きましょう!!", class: "ef"%>
+      <span class="focus_line"></span>
+    </div>
+
+  <% end %>
 </div>

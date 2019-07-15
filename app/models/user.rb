@@ -7,4 +7,5 @@ class User < ApplicationRecord
   belongs_to :usertype
   has_one :userprofile
   has_many  :items, through: :items_users
+  has_one_attached :avatar
 end

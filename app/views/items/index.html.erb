@@ -1,29 +1,46 @@
-<div class="contents row">
+<div class="index-content">
+  <div class="page-title__wrap">
+    <div class="page-title__wrap__text">
+      <h1>New Works Card </h1>
+    </div>
+  </div>
+  <div class="container">
   <% @items.each do |item| %>
-      <p>案件：<%= item.title %></p>
-      <p>単価：<%= item.price_s %>〜<%= item.price_e %>万円/月</p>
-      <p><%  item.skills.each do |skill| %>
-        <%= skill.language.name %>
+    <div class="col-lg-4">
+      <div class="card">
+      <div class="card__header">
+        <div class="avatar">
+          <a href="/users/<%= item.user_id %>">
+            <img alt="" src="http://cdn.onlinewebfonts.com/svg/img_311846.png">
+            <%= item.user.name %>
+          </a>さんの実績案件
+        </div>
+      </div>
+      <div class="card__body">
+        <p>案件名：<%= item.title %></p>
+        <% if item.price_e %>
+          <p>単価：<%= item.price_s %>〜<%= item.price_e %>万円/月</p>
+        <% else %>
+          <p>単価：<%= item.price_s %>万円/月</p>
         <% end %>
-      </p>
-      <span class="name">
-        <a href="/users/<%= item.user_id %>">
-          投稿ユーザ:<%= item.user.name %>
-        </a>
-      </span>
-      <ul class="more_list">
-        <li>
-          <%= link_to '詳細', "/items/#{item.id}", method: :get %>
-        </li>
-        <% if user_signed_in? && current_user.id == item.user_id %>
-        <li>
-          <%= link_to '編集', "/items/#{item.id}/edit", method: :get %>
-        </li>
-        <li>
-          <%= link_to '削除', "/items/#{item.id}", method: :delete %>
-        </li>
-        <% end %>
-      </ul>
-  <% end %>
+          <p><%  item.skills.each do |skill| %>
+            <%= skill.language.name %>
+            <% end %>
+          </p>
+          <p>勤務地：<%= item.place.name %></p>
+          <p>職種：<%= item.jobtype.name %></p>
+          <p>業種：<%= item.industry.name %></p>
+          <p><%= item.contents %></p>
+          <% if user_signed_in? && item.user_id == current_user.id %>
+            <div class="card__text__buttons">
+              <%= link_to 'edit', "/items/#{item.id}/edit", method: :get, class: 'blue-button' %>
+              <%= link_to 'delete', "/items/#{item.id}", method: :delete, class: 'blue-button' %>
+            </div>
+          <% end %>
+      </div>  
+    </div>
+    </div>
+    <% end %>
   <%= paginate(@items) %>
+</div>
 </div>
