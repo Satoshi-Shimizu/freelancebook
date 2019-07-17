@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_12_114902) do
+ActiveRecord::Schema.define(version: 2019_07_16_002931) do
+
+  create_table "goods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_goods_on_item_id"
+    t.index ["user_id"], name: "index_goods_on_user_id"
+  end
 
   create_table "industries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -32,13 +41,6 @@ ActiveRecord::Schema.define(version: 2019_07_12_114902) do
     t.index ["industry_id"], name: "index_items_on_industry_id"
     t.index ["jobtype_id"], name: "index_items_on_jobtype_id"
     t.index ["place_id"], name: "index_items_on_place_id"
-  end
-
-  create_table "items_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "jobtypes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -107,6 +109,8 @@ ActiveRecord::Schema.define(version: 2019_07_12_114902) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "goods", "items"
+  add_foreign_key "goods", "users"
   add_foreign_key "items", "industries"
   add_foreign_key "items", "jobtypes"
   add_foreign_key "items", "places"

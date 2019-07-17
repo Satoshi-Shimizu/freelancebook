@@ -4,5 +4,7 @@ class Item < ApplicationRecord
   belongs_to  :industry
   belongs_to  :place
   belongs_to  :user
-  has_many    :users, through: :items_users
+  has_many    :users, through: :goods
+  has_many    :goods
+  accepts_nested_attributes_for :goods
 end

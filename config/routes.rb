@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   resources :items
   resources :users , only: [:show]
   resources :userprofiles
+  post       '/goods/:item_id' => "goods#create"
+  delete    '/goods/:item_id' => "goods#destroy"
+
 end

@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   
-  before_action :move_to_index, except: :index
+  before_action :move_to_index
 
   def index
     @items = Item.includes(:user).page(params[:page]).per(5).order("created_at DESC")
@@ -40,7 +40,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    redirect_to action: :index unless user_signed_in?
+    redirect_to '/static_pages/home' unless user_signed_in?
   end
 
 end

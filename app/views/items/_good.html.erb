@@ -1,0 +1,23 @@
+<div class="goods_button">
+  <div calss="goods_button_contents" id="<%= item.id %>">
+    <% if item.goods.find_by(user_id: current_user.id, item_id: item.id) %>
+    <%= form_tag("/goods/#{item.id}",  method: :delete, class: 'heart-icon__off' ) do %>
+        <i class="heart-icon__push glyphicon glyphicon-heart"></i>
+        <% unless item.goods.length == 0 %>
+          <span class="heart-icon__text">
+          <%= item.goods.length %> 
+          </span>
+        <% end %>
+      <% end %>
+    <% else %>
+    <%= form_tag("/goods/#{item.id}",  method: :post, class: 'heart-icon__on' ) do %>
+        <i class="heart-icon__not-push glyphicon glyphicon-heart"></i>
+        <% unless item.goods.length == 0 %>
+          <span class="heart-icon__text">
+          <%= item.goods.length %> 
+          </span>
+        <% end %>
+      <% end%>
+    <% end %>
+  </div>
+</div>

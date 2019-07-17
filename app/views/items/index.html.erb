@@ -31,11 +31,14 @@
           <p>職種：<%= item.jobtype.name %></p>
           <p>業種：<%= item.industry.name %></p>
           <p><%= item.contents %></p>
-          <% if user_signed_in? && item.user_id == current_user.id %>
+          <% if user_signed_in?%>
             <div class="card__text__buttons">
+              <%= render partial: "good", locals: { item: item } %>
+              <% if item.user_id == current_user.id %>
               <%= link_to 'edit', "/items/#{item.id}/edit", method: :get, class: 'blue-button' %>
               <%= link_to 'delete', "/items/#{item.id}", method: :delete, class: 'blue-button' %>
-            </div>
+              <% end %>
+           </div>
           <% end %>
       </div>  
     </div>

@@ -74,7 +74,7 @@
       color: #696969;
     }
     &__buttons {
-      padding-top:30px;
+      padding:0px;
     }
    }
 }
@@ -254,7 +254,7 @@ footer {
   border-radius: 4px;
   text-align: center;
   font-weight: lighter;
-  margin: 0px 20px 15px 20px;
+  margin: 0px 15px 15px 15px;
   padding: 5px 0px;
   display: inline-block;
 }
@@ -334,4 +334,24 @@ footer {
 	top: -16px;
 	transition: 0.3s;
 	color: #da3c41;
+}
+
+.heart-icon {
+  &__push {
+    font-size:1.5rem;
+    color: #da3c41;
+    }
+  &__not-push {
+  font-size:1.5rem;
+  color: #d3d3d3;
+  }
+  &__text {
+    font-size:1.5rem;
+    color: #d3d3d3;  
+  }
+}
+
+.goods_button {
+  padding-left:20px;
+  padding-bottom:10px;
 }
