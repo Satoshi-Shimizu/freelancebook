@@ -22,32 +22,52 @@
   </head>
 
   <body>
-      <header class="header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-         <a class="navbar-brand" href="/">Freelance Book</a>
-          <% if user_signed_in? %>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <span>ログインユーザ:<%= current_user.name %></span>
-            <div class="navbar-nav">
-              <%= link_to 'My page', "/users/#{current_user.id}", method: :get, class: 'nav-item nav-link' %>
-              <%= link_to "New Work", '/items/new', method: :get, class: 'nav-item nav-link' %>
-              <%= link_to "Sing out", destroy_user_session_path, method: :delete, class: 'nav-item nav-link' %>
-              <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </div>
+    <header class="header">
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample7">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+              Freelance Book
+            </a>
           </div>
-          <% else %>
-            <div class="grid-6">
-            <%= link_to "Sing in", new_user_session_path, class: 'nav-item nav-link' %>
-            <%= link_to "Sing ", new_user_registration_path, class: 'nav-item nav-link'  %>
-            </div>
-          <% end %>
-        </nav>
-      </header>    
-        <%= yield %>
-      <footer>
-        <p>
-          Copyright FreeLance Book 2019.
-        </p>
-      </footer>
+          
+          <div class="collapse navbar-collapse" id="navbarEexample7">
+            <ul class="nav navbar-nav">
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to "New Work", '/items/new', method: :get, class: 'nav-item nav-link' %>
+                </li>
+                <li>
+                  <%= link_to "Sing out", destroy_user_session_path, method: :delete, class: 'nav-item nav-link' %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to "Sing In", new_user_session_path, class: 'nav-item nav-link' %>
+                </li>
+                <li>
+                  <%= link_to "Sing Up", new_user_registration_path, class: 'nav-item nav-link'  %>
+                </li>
+              <% end %>
+            </ul>
+            <% if user_signed_in? %>
+              <p class="navbar-text navbar-right">
+                <%= image_tag current_user.avatar, class: 'profile-header__img-rounded__navbar navbar-link' %>
+                <%= link_to current_user.name, "/users/#{current_user.id}", method: :get, class: 'nav-item nav-link' %>
+                さん
+              </p>
+            <% end %>
+          </div>
+        </div>
+      </nav>
+    </header>    
+      <%= yield %>
+      <footer><p>Copyright FreeLance Book 2019.</p></footer>
   </body>
 </html>

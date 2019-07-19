@@ -1,27 +1,107 @@
-<div class="user_page">
-  <header class="user_page-header">
-    <div class="yjContainer">
-      <a href="">
-        <div class="user_image"><%= image_tag 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/v/t1.0-1/c32.0.127.127/10256953_450511921719235_7408583294706772933_n.jpg?oh=4b62cd6d72667f23c3c4781dfc763b61&oe=54D54A3C&__gda__=1423979953_5fc50daca871a07e83167f1afbc8d304' %></div>
-        <h2><%= @user.name %> <span>さんのマイページ</span></h2>
-      </a>
-    </div>
-  </header>
+<div class="box">
+  <div class="container">
+    <div class="row">
 
-  <% if @user.userprofile %>
-    <p>属性：<%= @user.usertype.name %></p>
-    <p>プロファイル   ：<%= @user.userprofile.profile %></p>
-    <p>Twitter      ：<%= @user.userprofile.twitterurl %></p>
-    <p>出身スクール   ：<%= @user.userprofile.school.name %></p>
-    <p>ポートフォリオ  ：<%= @user.userprofile.portfoliourl %></p>
-    <p>ポイント       ：<%= @user.userprofile.point %></p>
-    edit
-    <div class="grid-6">
-      <%= link_to "プロファイルを修正する", "/userprofiles/#{@user.userprofile.id}/edit", method: :get %>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="profile-header">
+
+          <%= image_tag @user.avatar, class: 'profile-header__img-rounded' %>
+          <div class="profile-header__name"><%= @user.name %> <span>さんのマイページ</span>
+            <% if current_user.id == @user.id %>
+              <%= link_to "Update User Info", "/users/edit", method: :get ,class: 'btn btn-link' %>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <div class="box-part text-center profile-contents">
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+            <i class="fa fa-address-card-o fa-3x" aria-hidden="true"></i>
+            <div class="profile-contents__title">
+              <h3>プロフィール</h3>
+            </div>
+
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            <div class="profile-contents__description">
+              <p>--<%= @user.usertype.name %>--</p>
+              <% if @user.userprofile %>
+              <p><%= @user.userprofile.profile %></p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <% if @user.userprofile %>
+        <% if @user.userprofile.portfoliourl.empty? %>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="box-part text-center">
+              <i class="fa fa-twitter fa-3x" aria-hidden="true"></i>
+              <div class="title">
+                <h3>Twitter</h3>
+              </div>
+              <a href="<%= @user.userprofile.twitterurl%>" target="_blank">
+                <i class="glyphicon glyphicon-link" aria-hidden="true"></i>＼Follow Me／</a>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="box-part text-center">
+              <i class="fa glyphicon glyphicon-home fa-3x" aria-hidden="true"></i>
+              <div class="title">
+                <h3>出身スクール</h3>
+              </div>
+              <%= @user.userprofile.school.name %>
+            </div>
+          </div>
+        <% else %>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="box-part text-center">
+              <i class="fa fa-twitter fa-3x" aria-hidden="true"></i>
+              <div class="title">
+                <h3>Twitter</h3>
+              </div>
+              <a href="<%= @user.userprofile.twitterurl%>" target="_blank">
+                <i class="glyphicon glyphicon-link" aria-hidden="true"></i>＼Follow Me／</a>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="box-part text-center">
+              <i class="fa glyphicon glyphicon-home fa-3x" aria-hidden="true"></i>
+              <div class="title">
+                <h3>出身スクール</h3>
+              </div>
+              <%= @user.userprofile.school.name %>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="box-part text-center">
+              <i class="fa glyphicon glyphicon-user fa-3x" aria-hidden="true"></i>
+              <div class="title">
+                <h3>PORT FOLIO</h3>
+              </div>
+              <a href="<%= @user.userprofile.portfoliourl %>" target="_blank">
+              <i class="glyphicon glyphicon-link" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <% if current_user.id == @user.id %>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="profile-contents">
+            <div class="profile-contents__button center-block">
+              <% if @user.userprofile %>
+                  <%= link_to "Update User Profile", "/userprofiles/#{@user.userprofile.id}/edit", method: :get ,class: 'btn btn-primary btn-lg btn-block' %>
+              <% else %>
+                  <%= link_to "New User Profile", '/userprofiles/new', method: :get ,class: 'btn btn-primary btn-lg btn-block' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% else %>
-    <div class="grid-6">
-      <%= link_to "プロファイルを登録する", '/userprofiles/new', method: :get %>
-    </div>
-  <% end %>
   </div>
+</div>

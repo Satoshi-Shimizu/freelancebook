@@ -1,21 +1,46 @@
-  <div class="contents row">
-    <%= form_with(model: @profile, url: "/userprofiles/#{@profile.id}") do |f| %>
-      <h3>
-        ポートフォリオ修正
-      </h3>
-      <%= f.label :profile, "プロフィール" %>
-      <%= f.text_area :profile, size: "20x10", placeholder: "プロフィール"%>
+<div class="box">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h3>ポートフォリオ修正</h3>
 
-      <%= f.label :school_id ,"出身スクール"%>
-      <%= f.collection_select :school_id, School.all, :id, :name %>
+        <%= form_with(model: @profile, url: "/userprofiles/#{@profile.id}") do |f| %>
 
-      <%= f.label :twitterurl ,"Twitter URL"%>
-      <%= f.text_field :twitterurl%>
+          <div class="form-group">
+            <span class="control-label">
+              <%= f.label :profile, "プロフィール", class: 'label label-default'%>
+            </span>
+              <%= f.text_area :profile, size: "10x10", placeholder: "プロフィールを入力", class: 'form-control'%>
+          </div>
 
-      <%= f.label :portfoliourl ,"ポートフォリオ URL"%>
-      <%= f.text_field :portfoliourl%>
+          <div class="form-group profile-contents">
+            <span class="control-label">
+              <%= f.label :school_id ,"出身スクール", class: 'label label-default'%>
+            </span>
+            <%= f.collection_select :school_id, School.all, :id, :name, class: 'form-control input-lg' %>
+          </div>
 
-      <%= f.submit %>
-    <% end %>
+          <div class="input-group profile-contents">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-link" aria-hidden="true"></i>
+              <%= f.label :twitterurl ,"Twitter URL"%>
+            </span>
+            <%= f.text_field :twitterurl, class: 'form-control'%>
+          </div>
 
+          <div class="input-group profile-contents">
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-link" aria-hidden="true"></i>
+              <%= f.label :portfoliourl ,"ポートフォリオ URL"%>
+            </span>
+            <%= f.text_field :portfoliourl, class: 'form-control'%>
+          </div>
+
+          <div class="actions profile-contents">
+            <%= f.submit "Update", class: 'btn btn-primary btn-lg btn-block' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
+</div>

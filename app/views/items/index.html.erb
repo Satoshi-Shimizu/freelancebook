@@ -1,7 +1,7 @@
 <div class="index-content">
   <div class="page-title__wrap">
     <div class="page-title__wrap__text">
-      <h1>New Works Card </h1>
+      <h1>Works List </h1>
     </div>
   </div>
   <div class="container">
@@ -11,7 +11,7 @@
       <div class="card__header">
         <div class="avatar">
           <a href="/users/<%= item.user_id %>">
-            <img alt="" src="http://cdn.onlinewebfonts.com/svg/img_311846.png">
+            <%= image_tag item.user.avatar, class: 'profile-header__img-rounded' %>
             <%= item.user.name %>
           </a>さんの実績案件
         </div>

@@ -18,7 +18,8 @@ class UserprofilesController < ApplicationController
   def update
     profile = Userprofile.find(params[:id])
     if profile.user_id == current_user.id
-      profile.update(profile_params)
+       profile.update(profile_params)
+       redirect_to "/users/#{profile.user_id}"
     end
   end
 
