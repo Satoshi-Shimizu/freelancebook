@@ -16,8 +16,7 @@ $(function() {
     return html;
   }
 
-  $('.heart-icon__on').on('click', function(e) {
-    console.log('call heart-icon__on');
+  $(document).on('click', '.heart-icon__on', function(e) {
     e.preventDefault();
     var url = $(this).attr('action');
     var formData = new FormData(this);
@@ -35,17 +34,18 @@ $(function() {
 
       var insertHTML = addLengthHTML(data);
       if (data.length == 1) {
-        $('#' + data.item_id).find('.heart-icon__off').append(insertHTML); 
+         $('#' + data.item_id).find('.heart-icon__off').append(insertHTML); 
       }else{
-        $('#' + data.item_id).find('.heart-icon__text').text(data.length);
-      }data.length = "";
+         $('#' + data.item_id).find('.heart-icon__text').text(data.length);
+      }
+      data.length = "";
     })
     .fail(function(){
       console.log('heart-icon__on error');
     })
   });
 
-  $('.heart-icon__off').on('click', function(e) {
+  $(document).on('click', '.heart-icon__off', function(e) {
     e.preventDefault();
     var url = $(this).attr('action');
     var formData = new FormData(this);
