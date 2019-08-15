@@ -1,71 +1,79 @@
-<!-- About -->
-  <section class="about" id="about">
-  <div class="about__contents">
-    <div class="about__contents__image">
-    <div class="about__contents__site-title">Freelace Book</div>
-    <p class="about__contents__site-sub-title">~99Give 1Take~</p>
-    <div class="about__contents__site-description">
-      <p>生き方もチーム作りも柔軟に</p>
-    </div>
-    <div class="about__contents__buttons">
-      <a href="#login">
-        <% if user_signed_in? %>
-          <a href="/">
-            <button type="button" class="btn btn-primary btn-lg">MORE WORKS</button>
-          </a>
-        <% else %>
-          <a href="/users/sign_in">
-            <button type="button" class="btn btn-primary btn-lg">サインイン</button>
-          </a>
-        <% end %>
-      </a>
-    </div>
-    <div>
-  </div>
-  </section>
-  
-<!-- Services -->
-  <section class="services">
-    <div class="services__contents">
-      <div  class="services__contents__title">Service</div>
-      <div class="services__contents__wrapper">
-        <div class="container">
-          <div class="service-icon__box">
-            <p class="service-icon__title blod">フリーランス</p>
-            <div class="service-icon rounded-circle"><i class="fa fa-users fa-3x" aria-hidden="true"></i></div>
-            <h4 class="service-icon__text blod">Matching</h4>
-            <p class="service-icon__text-description">最適なパートナーを見つける事ができます</p>
-          </div>
-          <div class="service-icon__box">
-            <p class="service-icon__title blod">プログラミングスクール生</p>
-            <div class="service-icon rounded-circle"><i class="fa fa-map fa-3x" aria-hidden="true"></i></div>
-            <h4 class="service-icon__text blod">Watching</h4>
-            <p class="service-icon__text-description">フリーランスの実績案件を確認できます</p>
-          </div>
-        </div>
-        <i class="fa fa-angle-double-down fa-5x fa-my-white" aria-hidden="true"></i>
+<div class="jumbotron">
+    <div class="container-fluid">
+    <!-- About -->
+    <section class="about" id="about">
+    <div class="about__contents">
+      <div class="about__contents__image">
+      <div class="about__contents__site-title">Freelace Book</div>
+      <p class="about__contents__site-sub-title">~99Give 1Take~</p>
+      <div class="about__contents__site-description">
+        <p>生き方もチーム作りも柔軟に</p>
       </div>
-    <div>
-  </section>
+      <div class="about__contents__buttons">
+        <a href="#login">
+          <% if user_signed_in? %>
+            <a href="/">
+              <button type="button" class="btn btn-primary btn-lg">MORE WORKS</button>
+            </a>
+          <% else %>
+            <a href="/users/sign_in">
+              <button type="button" class="btn btn-primary btn-lg">サインイン</button>
+            </a>
+          <% end %>
+        </a>
+      </div>
+      <div>
+    </div>
+    </section>
 
-<!-- Login -->
-  <section class="login" id="login">
-    <div class="login__contents">
-     <div class="login__contents__title">はじめてみる</div>
-      <div class="login__contents__wrapper">
-        <div class="container">
-          <div class="login__contents__box">
-              <p>すでにアカウントをお持ちの方</p>
+  <!-- Services -->
+    <section class="services">
+      <div class="services__contents">
+        <div  class="services__contents__title">Service</div>
+        <div class="services__contents__wrapper">
+            <div class="row">
+              <div class="col-xs-12 col-sm-5 space-top-2">
+                <p class="sub-title">フリーランス</p>
+                <div class="rounded-circle"><i class="fa fa-handshake-o fa-2x my-white" aria-hidden="true"></i></div>
+                <h4 class="sub-title">Matching</h4>
+                <p class="text-lead">最適なパートナーを見つける事ができます。</p>
+              </div>
+              <div class="col-xs-12 col-sm-2 space-top-2">
+              </div>
+              <div class="col-xs-12 col-sm-5 space-top-2">
+                <p class="sub-title">プログラミングスクール生</p>
+                <div class="rounded-circle"><i class="fa fa-building-o fa-2x my-white" aria-hidden="true"></i></div>
+                <h4 class="sub-title">Watching</h4>
+                <p class="text-lead">フリーランスの実績案件を確認できます。</p>
+              </div>
+            </div>
+          <i class="fa fa-angle-double-down fa-5x my-white" aria-hidden="true"></i>
+        </div>
+      <div>
+    </section>
+
+  <!-- Login -->
+    <section class="login" id="login">
+      <div class="login__contents">
+        <div class="login__contents__title">はじめてみる</div>
+        <div class="login__contents__wrapper">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 space-top-2">
+              <p class="sub-title">すでにアカウントをお持ちの方</p>
               <a href="/users/sign_in">
                 <button type="button" class="btn btn-primary btn-lg">サインイン</button>
               </a>
-           </div>
-          <div class="login__contents__box">
-            <p>アカウントを持っていない方</p>
-            <a href="/users/sign_up">
-              <button type="button" class="btn btn-primary btn-lg">サインアップ</button>
-            </a>
+            </div>
+            <div class="col-xs-12 col-sm-6 space-top-2">
+              <p class="sub-title">アカウントを持っていない方</p>
+              <a href="/users/sign_up">
+                <button type="button" class="btn btn-primary btn-lg">サインアップ</button>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+  </div>
+</div>
