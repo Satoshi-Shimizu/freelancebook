@@ -45,9 +45,10 @@
           <% if user_signed_in?%>
             <div class="card__body__action">
               <%= render partial: "good", locals: { item: item } %>
+              <%= link_to 'comment', "", method: :get, "aria-hidden" => "true", class: 'blue-button fa fa-comment fa-fw my-white'%>
               <% if item.user_id == current_user.id %>
-              <%= link_to 'edit', "/items/#{item.id}/edit", method: :get, class: 'blue-button' %>
-              <%= link_to 'delete', "/items/#{item.id}", method: :delete, class: 'blue-button' %>
+              <%= link_to 'edit', "/items/#{item.id}/edit", method: :get, "aria-hidden" => "true", class: 'blue-button fa fa-pencil fa-fw my-white' %>
+              <%= link_to 'delete', "/items/#{item.id}", method: :delete, "aria-hidden" => "true", class: 'blue-button fa fa-trash-o fa-fw my-white' %>
               <% end %>
           </div>
           <% end %>
