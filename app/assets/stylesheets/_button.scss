@@ -1,0 +1,44 @@
+.button {
+  display: block;
+  height: 80px;
+  width :260px;
+  margin:0 auto 50px;
+  border-radius: 10px;
+  font-size:20px;
+  color:#fff;
+  text-decoration: none;
+  text-align: center;
+  line-height: 80px;
+  background-color: #1d809f;
+  color: #fff;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.button-orange {
+  background-color:#f1b400;
+}
+
+.button-white {
+  background-color:#fff;
+  color:#f1b400;
+}
+
+.index-content .blue-button {
+  width: 100px;
+  -webkit-transition: background-color 1s, color 1s;
+  /* For Safari 3.1 to 6.0 */
+  transition: background-color 1s, color 1s;
+  min-height: 20px;
+  background-color: #002E5B;
+  color: #ffffff;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: lighter;
+  margin: 0px 15px 15px 15px;
+  padding: 5px 0px;
+  display: inline-block;
+}
+
