@@ -18,29 +18,40 @@
           </div>
         </div>
         <div class="card__body">
+
           <p class="card__body__titel">案件名：<%= item.title %></p>
+
           <% if item.price_e %>
             <p>単価：<%= item.price_s %>〜<%= item.price_e %>万円/月</p>
           <% else %>
             <p>単価：<%= item.price_s %>万円/月</p>
           <% end %>
-            <p><%  item.skills.each do |skill| %>
-              <%= skill.language.name %>
-              <% end %>
-            </p>
-            <p>勤務地：<%= item.place.name %></p>
-            <p>職種：<%= item.jobtype.name %></p>
-            <p>業種：<%= item.industry.name %></p>
-            <p><%= item.contents %></p>
-            <% if user_signed_in?%>
-              <div class="card__body__action">
-                <%= render partial: "good", locals: { item: item } %>
-                <% if item.user_id == current_user.id %>
-                <%= link_to 'edit', "/items/#{item.id}/edit", method: :get, class: 'blue-button' %>
-                <%= link_to 'delete', "/items/#{item.id}", method: :delete, class: 'blue-button' %>
-                <% end %>
+
+          <% unless item.skills.empty? then %>
+            <div clsss="row">
+              <div class="container">
+                  <% item.skills.each do |skill| %>
+                    <div class="card__body__skill"><%= skill.language.name %></div> 
+                  <% end %>
+              </div>
             </div>
-            <% end %>
+          <%end%>
+
+          <p>勤務地：<%= item.place.name %></p>
+          <p>職種：<%= item.jobtype.name %></p>
+          <p>業種：<%= item.industry.name %></p>
+          <p class="card__body__contents">概要：<%= item.contents %></p>
+
+          <% if user_signed_in?%>
+            <div class="card__body__action">
+              <%= render partial: "good", locals: { item: item } %>
+              <% if item.user_id == current_user.id %>
+              <%= link_to 'edit', "/items/#{item.id}/edit", method: :get, class: 'blue-button' %>
+              <%= link_to 'delete', "/items/#{item.id}", method: :delete, class: 'blue-button' %>
+              <% end %>
+          </div>
+          <% end %>
+
         </div>  
       </div>
       </div>
