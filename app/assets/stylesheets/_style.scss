@@ -19,7 +19,6 @@
   background-color:#ffd700;
  }
 
- 
 .page-title__wrap {
     position: relative;
     margin-bottom:15px;
@@ -40,12 +39,12 @@
     background-color: #000;
     display: block;
     position: absolute;
-    left: 0;
+    margin: auto;
     width: 100%;
     height: 1px;
     top: 0;
     bottom: 0;
-    margin: auto;
+    left: 0;
   }
 
   /*****************************
@@ -122,6 +121,7 @@
 .my-gray {color: gray}
 .my-skyblue {color: skyblue}
 .my-orange {color: #fecb81}
+.my-black {color: #555555}
 
 /*****************************************
  *  login
@@ -151,7 +151,11 @@
 /*****************************************
  *  common parts
  *****************************************/
-.space-top-2{
+.form-center{
+  margin:0 auto;
+  width: 480px;
+}
+ .space-top-2{
   margin-top: 18px;
 }
 .text-center {
@@ -179,7 +183,6 @@ footer {
   height:10vh;
   text-align: center;
 }
-
 
 .button {
   display: block;
