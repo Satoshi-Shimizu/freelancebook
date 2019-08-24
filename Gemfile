@@ -71,3 +71,7 @@ gem 'devise'
 gem "font-awesome-rails"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
+
+
+# for パンくずリスト function
+gem 'gretel'
